@@ -1,0 +1,72 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<style type='text/css'>
+			#dropZone{
+				border: 3px dashed #0088cc;
+				padding:50px;
+				width:500px;
+				margin-top:20px;
+			}
+			#files{
+				border: 1px dotted #0088cc;
+				padding: 20px;
+				width: 200px;
+				display:none;
+			}
+			#error{
+				color:#f00;
+			}
+		</style>
+		<center>
+			<div id='dropZone'>
+				<h1>Drag and Drop files...</h1>
+				<!--<input type='file' id='fileupload' name='attachments[]' multiple>-->
+				<input type='file' id='fileupload' name='attachments'>
+			</div>
+			<h1 id='progress'><h1><br>
+			<h1 id='error'><h1><br>
+			<div id='files'></div>
+		</center>
+		<script src='http://code.jquery.com/jquery-3.2.1.min.js'></script>
+		<script src='static/js/vendor/jquery.ui.widget.js'></script>
+		<script src='static/js/jquery.iframe-transport.js'></script>
+		<script src='static/js/jquery.fileupload.js'></script>
+		<script>
+			$(function(){
+				var files=$('#files');
+				$("#fileupload").fileupload({
+					type:'POST',
+					url:'/uploadFile',
+					dropZone:'#dropZone',
+					dataType:'json',
+					autoUpload:false
+				}).on('fileuploadadd',function(e,data){
+					var fileTypeAllowed = /.\.(gif|jpg|png|jpeg)$/i;
+					var fileName=data.originalFiles[0]['name'];
+					var fileSize=data.originalFiles[0]['size'];
+					console.log(fileSize)
+					mfs=100000000;
+					fs=mfs/1000;
+					console.log(fs);
+					if(!fileTypeAllowed.test(fileName))
+						$("#error").html("Solo se permiten imágenes...");
+					else if(fileSize>mfs)
+						$("#error").html("Archivo demasiado grande..., solo se permite "+fs+"KB");
+					else
+					{	$("#error").html("");
+						data.submit();
+					}
+					
+				}).on('fileuploaddone',function(e,data){
+					
+				}).on('fileuploadprogressall',function(e,data){
+					var progress=parseInt(data.loaded/data.total*100,10);
+					$("#progress").html("Completado: "+progress+"%")
+				});
+			});
+		</script>
+		
+	</body>
+</html>

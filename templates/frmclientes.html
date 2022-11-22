@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<title>Registro de Clientes</title>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<table align='center'>
+		<tr>
+			<td>Id</td>
+			<td id='id'>0</td>
+		</tr>
+		<tr>
+			<td>DNI</td>
+			<td><input type='text' id='dni' value='12345678' size='5'>&nbsp;&nbsp;<button onclick='buscarxdni()'>B</button></td>
+		</tr>
+		<tr>
+			<td>Apellidos</td>
+			<td><input type='text' id='ape'></td>
+		</tr>
+		<tr>
+			<td>Nombres</td>
+			<td><input type='text' id='nom'></td>
+		</tr>
+		<tr>
+			<td>Sexo</td>
+			<td>
+				<input type='radio' name='sex' value='1' checked>Masculino
+				<input type='radio' name='sex' value='0'>Femenino
+			</td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td>
+				<input type='text' id='ema'>
+			</td>
+		</tr>
+		<tr>
+			<td>Clave</td>
+			<td>
+				<input type='password' id='cla'>
+			</td>
+		</tr>
+		<tr>
+			<td>Foto</td>
+			<td>
+				<input type='file' accept='image/*' id='foto'>
+			</td>
+		</tr>
+		<tr>
+			<td colspan='2'>
+				<button class='btn btn-primary' onclick='guardar()'>G U A R D A R</button>
+				<button class='btn btn-danger' onclick='eliminar(0,-1,1)'>E L I M I N A R</button>
+			</td>
+		</tr>
+		<tr>	
+			<td colspan='2'>
+				<select id='campo'>
+					<option value='dni'>DNI</option>
+					<option value='apellidos' selected>Apellidos</option>
+					<option value='nombres'>Nombres</option>
+					<option value='email'>E-Mail</option>
+				</select>
+				<select id='oper'>
+					<option value='LIKE'>Similar a</option>
+					<option value='>'>Mayor a</option>
+					<option value='<'>Menor a</option>
+				</select>
+				<input type='text' id='valor'>
+				<button onclick='buscar()'>Buscar</button>
+				<!--<button class='btn btn-primary' onclick="getTotalRegs()">B</button>-->
+			</td>
+		</tr>
+		<tr>
+			<td colspan='2' id='results'>
+			</td>
+		</tr>
+		<tr>
+			<th colspan='2' id='pages'>
+			</th>
+		</tr>		
+	</table>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+	<script src='../static/frmclientes.js'></script>
+</body>
+</html>

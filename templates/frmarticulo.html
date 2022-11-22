@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<title>Registro de Articulos</title>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<table align='center'>
+		<tr>
+			<td>Id</td>
+			<td id='id'>0</td>
+		</tr>
+		<tr>
+			<td>Codigo</td>
+			<td><input type='text' id='codigo' name='codigo' value='' size='5'>&nbsp;&nbsp;<button onclick='buscarxdni()'>B</button></td>
+		</tr>
+		<tr>
+			<td>Titulo</td>
+			<td><input type='text' id='titulo' name='titulo'></td>
+		</tr>
+        <tr>
+            <td>Fecha</td>
+            <td><input type="date" id='fecha' name="fecha" ></td>
+        </tr>
+		<tr>
+			<td>Foto</td>
+			<td>
+				<input type='file' accept='image/*' id='foto'>
+			</td>
+		</tr>
+        <tr>
+            <td>Tipo de Articulo</td>
+            <td><select id='tipo_articulo' name='tipo_articulo'>
+                <option value='1' >Libro</option>
+                <option value='2' >Revista</option>
+                </select>
+            </td>
+        </tr>
+        <tr id = 'num'>
+            <td>Numero</td>
+            <td><input type="text" name="numero" id="numero"></td>
+        </tr>
+        <tr id = 'vol'>
+            <td>Volumen</td>
+            <td><input type="text" name="volumen" id="volumen"></td></td>
+        </tr>
+		<tr>
+			<td colspan='2'>
+				<button class='btn btn-primary' onclick='guardar()'>G U A R D A R</button>
+				<button class='btn btn-danger' onclick='eliminar(0,-1,1)'>E L I M I N A R</button>
+			</td>
+		</tr>
+		<tr>	
+			<td colspan='2'>
+				<select id='campo'>
+					<option value='dni'>Tipo</option>
+					<option value='apellidos' selected>Titulo</option>
+					<option value='nombres'>Fecha</option>
+					
+				</select>
+				<select id='oper'>
+					<option value='LIKE'>Similar a</option>
+					<option value='>'>Mayor a</option>
+					<option value='<'>Menor a</option>
+				</select>
+				<input type='text' id='valor'>
+				<button onclick='buscar()'>Buscar</button>
+				<!--<button class='btn btn-primary' onclick="getTotalRegs()">B</button>-->
+			</td>
+		</tr>
+		<tr>
+			<td colspan='2' id='results'>
+			</td>
+		</tr>
+		<tr>
+			<th colspan='2' id='pages'>
+			</th>
+		</tr>		
+	</table>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+	<script src='../static/frmarticulo.js'></script>
+</body>
+</html>
